@@ -19,7 +19,7 @@
           <mxGeometry y="30" width="260" height="136" as="geometry" />
         </mxCell>
         <mxCell id="c_user_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#0284c7;" vertex="1" parent="c_user">
-          <mxGeometry y="166" width="260" height="8" as="geometry" />
+          <mxGeometry y="166" width="260" height="8" as="geometry"/>
         </mxCell>
         <mxCell id="c_user_methods" value="+ comparePassword(pwd) : Boolean&#xa;+ isManager() : Boolean&#xa;+ isAdmin() : Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1e293b;fontSize=11;" vertex="1" parent="c_user">
           <mxGeometry y="174" width="260" height="56" as="geometry" />
