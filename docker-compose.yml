@@ -1,3 +1,4 @@
+# ToolShare API and MongoDB services
 services :
   mongodb:
     image: mongo:7.0
