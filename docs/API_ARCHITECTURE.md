@@ -3,9 +3,9 @@
 ## Vue d'ensemble
 
 ToolShare est un backend REST en Node.js, Express 5, Mongoose et MongoDB.
-L'architecture est initialisée dans `src/`. Les endpoints racine et santé
-fonctionnent; les modules des ressources métier sont des points de départ et
-ne fournissent pas encore de CRUD ni d'authentification.
+L'architecture est initialisée dans `src/`. Les routes racine, santé et
+d'authentification fonctionnent; les modules des ressources métier sont des
+points de départ et ne fournissent pas encore de CRUD.
 
 ```mermaid
 flowchart LR
@@ -98,6 +98,9 @@ notamment l'entité `Tool`; il faut confirmer son équivalence avec `Equipment`.
 | --- | --- | --- |
 | `GET` | `/` | Message de bienvenue et environnement |
 | `GET` | `/api/v1/health` | État `ok` et environnement |
+| `POST` | `/api/v1/auth/register` | Crée un compte `USER` et retourne un JWT |
+| `POST` | `/api/v1/auth/login` | Vérifie les identifiants et retourne un JWT |
+| `GET` | `/api/v1/me` | Retourne le profil associé au JWT Bearer |
 
 Les routeurs `/api/v1/auth`, `/installation`, `/stores`, `/equipment` et
 `/reservations` sont montés, mais ne définissent pas encore d'endpoints.
@@ -113,7 +116,7 @@ et est signalé dans la console.
 | `PORT` | Port HTTP, `5000` par défaut. |
 | `NODE_ENV` | Environnement retourné par les routes de base. |
 | `MONGO_URI` | URI de connexion Mongoose. L'exemple Docker cible le service `mongodb`. |
-| `JWT_SECRET` | Réservée à la future authentification; aucun JWT n'est actif. |
+| `JWT_SECRET` | Clé obligatoire pour signer et vérifier les JWT. |
 
 Ne créez pas de fichier `.env` contenant des secrets dans Git. Copiez
 `.env.example` en `.env` localement. Démarrez les services avec :
@@ -124,6 +127,11 @@ docker compose -f docker-compose.yml up --build
 
 `config/swagger.js` contient les métadonnées OpenAPI, mais l'interface Swagger
 n'est pas encore servie par l'application.
+
+L'inscription attend `name`, `email` et `password` (8 caractères minimum);
+le rôle est attribué à `USER` et le mot de passe est haché avec bcrypt.
+Pour lire le profil, envoyer `Authorization: Bearer <token>`. Les JWT expirent
+après une heure.
 
 ## Responsabilités des couches
 

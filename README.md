@@ -19,5 +19,6 @@ Copiez `.env.example` vers `.env`, puis démarrez les services avec Docker Compo
 docker compose -f docker-compose.yml up --build
 ```
 
-L'API écoute sur le port `5000`. Les routes actuellement disponibles sont
-`GET /` et `GET /api/v1/health`.
+L'API écoute sur le port `5000`. Les routes disponibles sont `GET /`,
+`GET /api/v1/health`, `POST /api/v1/auth/register`,
+`POST /api/v1/auth/login` et `GET /api/v1/me` (avec un JWT Bearer).
