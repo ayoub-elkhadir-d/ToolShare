@@ -1,4 +1,4 @@
-const Installation = require('../models/Installation.js');
+const Installation = require('../models/installation.model.js');
 
 class InstallationRepository{
     async getInstallation(){
