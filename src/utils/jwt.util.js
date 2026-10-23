@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const TOKEN_LIFETIME = '1h'
+const TOKEN_LIFETIME = '24h'
 
 function getSecret() {
     const secret = process.env.JWT_SECRET
