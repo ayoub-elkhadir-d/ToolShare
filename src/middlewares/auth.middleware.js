@@ -9,7 +9,6 @@ async function authenticate(req, res, next) {
         return res.status(401).json({ message: 'Authentification requise ou jeton invalide.' })
     }
 
-
     const parts = authorization.split(' ')
 
     if (parts.length !== 2 || parts[0] !== 'Bearer') {
@@ -39,6 +38,18 @@ async function authenticate(req, res, next) {
     next()
 }
 
-module.exports = { authenticate }
+function restrictTo(...roles) {
+    return function (req, res, next) {
+        if (!req.user || !roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Accès refusé. Permissions insuffisantes.' })
+        }
+        next()
+    }
+}
 
-//done 
+
+
+module.exports = { 
+    authenticate, 
+    restrictTo, 
+}
